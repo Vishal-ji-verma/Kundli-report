@@ -1,0 +1,12 @@
+# Proxy API calls to the backend server (Render/Railway/Fly.io)
+# Replace BACKEND_URL with your actual backend URL once deployed
+[[redirects]]
+  from = "/api/*"
+  to = "https://vedic-kundli-portal.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

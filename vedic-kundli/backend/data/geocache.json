@@ -1,0 +1,192 @@
+{
+  "sik": [
+    {
+      "city": "Pari",
+      "state": "Chamoli Tehsil, Uttarakhand",
+      "country": "India",
+      "lat": 30.2982,
+      "lon": 79.5672,
+      "tz": 5.5
+    },
+    {
+      "city": "Usilampatti",
+      "state": "Usilampatti, Tamil Nadu",
+      "country": "India",
+      "lat": 9.9656,
+      "lon": 77.8114,
+      "tz": 5.5
+    }
+  ],
+  "sikar": [
+    {
+      "city": "Sikar",
+      "state": "Sikar, Rajasthan",
+      "country": "India",
+      "lat": 27.6624,
+      "lon": 75.028,
+      "tz": 5.5
+    },
+    {
+      "city": "Sikar",
+      "state": "Sikar Tehsil, Rajasthan",
+      "country": "India",
+      "lat": 27.6092,
+      "lon": 75.1396,
+      "tz": 5.5
+    },
+    {
+      "city": "Sikar",
+      "state": "Sikar, Rajasthan",
+      "country": "India",
+      "lat": 27.5833,
+      "lon": 75.1667,
+      "tz": 5.5
+    }
+  ],
+  "sika": [
+    {
+      "city": "Sika",
+      "state": "Pachore Tahsil, Madhya Pradesh",
+      "country": "India",
+      "lat": 23.542,
+      "lon": 76.8563,
+      "tz": 5.5
+    },
+    {
+      "city": "Palling",
+      "state": "Palling Circle, Arunachal Pradesh",
+      "country": "India",
+      "lat": 28.8798,
+      "lon": 94.8177,
+      "tz": 5.5
+    }
+  ],
+  "kuch": [
+    {
+      "city": "Hyderabad",
+      "state": "Charminar mandal, Telangana",
+      "country": "India",
+      "lat": 17.3665,
+      "lon": 78.4795,
+      "tz": 5.5
+    },
+    {
+      "city": "Kulgam",
+      "state": "Kulgam, Jammu and Kashmir",
+      "country": "India",
+      "lat": 33.6785,
+      "lon": 75.023,
+      "tz": 5.5
+    }
+  ],
+  "kuc": [
+    {
+      "city": "Koch Bihar",
+      "state": "Cooch Behar - I, West Bengal",
+      "country": "India",
+      "lat": 26.3224,
+      "lon": 89.4592,
+      "tz": 5.5
+    },
+    {
+      "city": "Karukutty",
+      "state": "Aluva, Kerala",
+      "country": "India",
+      "lat": 10.2257,
+      "lon": 76.3737,
+      "tz": 5.5
+    }
+  ],
+  "kucha": [
+    {
+      "city": "Chhatri",
+      "state": "Thunag, Himachal Pradesh",
+      "country": "India",
+      "lat": 31.4557,
+      "lon": 77.2804,
+      "tz": 5.5
+    },
+    {
+      "city": "Gurrala Dandi",
+      "state": "Bibinagar mandal, Telangana",
+      "country": "India",
+      "lat": 17.4124,
+      "lon": 78.8605,
+      "tz": 5.5
+    },
+    {
+      "city": "Delhi",
+      "state": "Old Delhi, Delhi",
+      "country": "India",
+      "lat": 28.6552,
+      "lon": 77.2266,
+      "tz": 5.5
+    },
+    {
+      "city": "Delhi",
+      "state": "Old Delhi, Delhi",
+      "country": "India",
+      "lat": 28.6477,
+      "lon": 77.227,
+      "tz": 5.5
+    },
+    {
+      "city": "Delhi",
+      "state": "Old Delhi, Delhi",
+      "country": "India",
+      "lat": 28.6472,
+      "lon": 77.2278,
+      "tz": 5.5
+    },
+    {
+      "city": "Delhi",
+      "state": "Old Delhi, Delhi",
+      "country": "India",
+      "lat": 28.6537,
+      "lon": 77.233,
+      "tz": 5.5
+    },
+    {
+      "city": "Delhi",
+      "state": "Old Delhi, Delhi",
+      "country": "India",
+      "lat": 28.6458,
+      "lon": 77.2303,
+      "tz": 5.5
+    },
+    {
+      "city": "Delhi",
+      "state": "Old Delhi, Delhi",
+      "country": "India",
+      "lat": 28.6539,
+      "lon": 77.2326,
+      "tz": 5.5
+    }
+  ],
+  "kuchaman": [
+    {
+      "city": "Kuchaman",
+      "state": "Kuchaman City Tehsil, Rajasthan",
+      "country": "India",
+      "lat": 27.1519,
+      "lon": 74.8621,
+      "tz": 5.5
+    },
+    {
+      "city": "Kuchaman City Tehsil",
+      "state": "Kuchaman City Tehsil, Rajasthan",
+      "country": "India",
+      "lat": 27.1704,
+      "lon": 74.8396,
+      "tz": 5.5
+    },
+    {
+      "city": "Didwana-Kuchaman",
+      "state": "Didwana-Kuchaman, Rajasthan",
+      "country": "India",
+      "lat": 27.1331,
+      "lon": 74.7734,
+      "tz": 5.5
+    }
+  ]
+}

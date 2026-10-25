@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>वैदिक जन्म कुण्डली • Vedic Kundli Portal</title>
+    <meta name="description" content="Authentic Vedic Kundli generator with North and South Indian charts, Vimshottari Dashas, Panchang, and Manglik Dosha analysis.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Rozha+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=6.0">
+</head>
+<body>
+
+    <!-- Sacred Vedic Top Banner -->
+    <div class="sacred-top-bar">
+        <span>॥ श्री गणेशाय नमः ॥</span>
+        <span class="sacred-divider">•</span>
+        <span>॥ ॐ नमो भगवते वासुदेवाय ॥</span>
+        <span class="sacred-divider">•</span>
+        <span>॥ शुभम् भवतु ॥</span>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand">
+                <div class="brand-symbol">
+                    <span class="om-char">ॐ</span>
+                </div>
+                <div>
+                    <h1 class="brand-title">Vedic Kundli Portal</h1>
+                    <p class="brand-subtitle">वैदिक जन्म कुण्डली • Traditional Jyotish & Precision Ephemeris</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="quickSampleBtn" class="btn btn-vedic-outline" title="Load sample birth data">
+                    <span>⚡ Sample Kundli</span>
+                </button>
+                <button id="printReportBtn" class="btn btn-vedic-primary" style="display: none;">
+                    <span>🖨️ Print / Save PDF</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Guided Wizard Progress Stepper -->
+    <nav class="wizard-stepper-container">
+        <div class="wizard-stepper">
+            <div class="step-item active" id="stepIndicator1" onclick="goToStep(1)">
+                <div class="step-circle">
+                    <span class="step-num">१</span>
+                    <span class="step-icon">📝</span>
+                </div>
+                <div class="step-info">
+                    <span class="step-title">Birth Details</span>
+                    <span class="step-hindi">जन्म विवरण</span>
+                </div>
+            </div>
+            <div class="step-line" id="stepLine1"></div>
+            <div class="step-item" id="stepIndicator2" onclick="goToStep(2)">
+                <div class="step-circle">
+                    <span class="step-num">२</span>
+                    <span class="step-icon">🕉️</span>
+                </div>
+                <div class="step-info">
+                    <span class="step-title">Kundli Charts</span>
+                    <span class="step-hindi">कुण्डली दर्शन</span>
+                </div>
+            </div>
+            <div class="step-line" id="stepLine2"></div>
+            <div class="step-item" id="stepIndicator3" onclick="goToStep(3)">
+                <div class="step-circle">
+                    <span class="step-num">३</span>
+                    <span class="step-icon">📜</span>
+                </div>
+                <div class="step-info">
+                    <span class="step-title">Full Analysis</span>
+                    <span class="step-hindi">सम्पूर्ण विवेचन</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <!-- =======================================================
+             STEP 1: BIRTH DETAILS FORM (जन्म विवरण)
+             ======================================================= -->
+        <section id="step1Container" class="wizard-step-pane active">
+            <div class="vedic-card ornate-border">
+                <div class="card-title-banner">
+                    <div class="mandala-accent left"></div>
+                    <div class="title-content">
+                        <h2 class="section-heading">Step 1: Enter Birth Information (जन्म पत्रिका विवरण)</h2>
+                        <p class="section-subtext">Provide precise birth date, time, and location to compute exact astrological planetary degrees.</p>
+                    </div>
+                    <div class="mandala-accent right"></div>
+                </div>
+
+                <form id="kundliForm" class="kundli-form">
+                    <!-- Name & Gender -->
+                    <div class="form-row">
+                        <div class="form-group flex-2">
+                            <label for="name">
+                                <span class="label-icon">👤</span> Full Name (जातक का नाम)
+                            </label>
+                            <input type="text" id="name" name="name" placeholder="e.g. Arjun Sharma" value="Arjun Sharma" required>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="gender">
+                                <span class="label-icon">⚧</span> Gender (लिंग)
+                            </label>
+                            <select id="gender" name="gender">
+                                <option value="Male">Male (पुरुष)</option>
+                                <option value="Female">Female (स्त्री)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time of Birth -->
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="birthDate">
+                                <span class="label-icon">📅</span> Date of Birth (जन्म तिथि)
+                            </label>
+                            <input type="date" id="birthDate" name="birthDate" value="1995-10-24" required>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="birthTime">
+                                <span class="label-icon">⏰</span> Time of Birth (जन्म समय - 24 Hr)
+                            </label>
+                            <input type="time" id="birthTime" name="birthTime" step="1" value="10:30:00" required>
+                        </div>
+                    </div>
+
+                    <!-- City Search & Timezone -->
+                    <div class="form-row">
+                        <div class="form-group flex-2" style="position: relative;">
+                            <label for="citySearch">
+                                <span class="label-icon">📍</span> Birth Place (जन्म स्थान - City / State / Country)
+                            </label>
+                            <input type="text" id="citySearch" placeholder="Search city e.g. New Delhi, Varanasi, Mumbai, London..." value="New Delhi, Delhi, India" autocomplete="off" required>
+                            <div id="cityDropdown" class="dropdown-list"></div>
+                            <span class="field-hint">Type any city to auto-fill latitude, longitude, and timezone.</span>
+                        </div>
+                        <div class="form-group flex-1">
+                            <label for="timezone">
+                                <span class="label-icon">🌐</span> Time Zone (UTC Offset)
+                            </label>
+                            <input type="number" id="timezone" step="0.25" value="5.5" required>
+                            <span class="field-hint">India Standard Time is UTC +5.5</span>
+                        </div>
+                    </div>
+
+                    <!-- Technical Coordinates Accordion -->
+                    <details class="vedic-accordion">
+                        <summary>
+                            <span class="accordion-title">⚙️ Geographic Coordinates & Technical Ephemeris Settings</span>
+                            <span class="accordion-arrow">▼</span>
+                        </summary>
+                        <div class="accordion-body">
+                            <div class="form-row">
+                                <div class="form-group flex-1">
+                                    <label for="latitude">Latitude (° North/South)</label>
+                                    <input type="number" id="latitude" step="0.0001" value="28.6139" required>
+                                </div>
+                                <div class="form-group flex-1">
+                                    <label for="longitude">Longitude (° East/West)</label>
+                                    <input type="number" id="longitude" step="0.0001" value="77.2090" required>
+                                </div>
+                                <div class="form-group flex-1">
+                                    <label>Ayanamsha System</label>
+                                    <input type="text" value="Lahiri / Chitrapaksha (Official Vedic)" readonly class="input-readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Submit & Next Button -->
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="btn btn-vedic-gold btn-large">
+                            <span id="btnText">✨ Generate Vedic Kundli & View Chart ➔</span>
+                            <div id="btnSpinner" class="spinner" style="display: none;"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loadingBox" class="loading-box" style="display: none;">
+            <div class="vedic-loading-ring">
+                <div class="loading-om">ॐ</div>
+            </div>
+            <h3 class="loading-title">Calculating Graha Mandalam...</h3>
+            <p class="loading-subtitle">Computing Lahiri Ayanamsha, Lagna, Navamsha D9, Vimshottari Dashas & Panchang</p>
+        </div>
+
+        <!-- =======================================================
+             STEP 2: KUNDLI CHARTS & HIGHLIGHTS (कुण्डली दर्शन)
+             ======================================================= -->
+        <section id="step2Container" class="wizard-step-pane">
+            <!-- Profile Summary Card -->
+            <div class="vedic-card ornate-border profile-banner">
+                <div class="profile-left">
+                    <div class="profile-kalash">
+                        <span class="kalash-icon">🪔</span>
+                    </div>
+                    <div class="profile-meta-info">
+                        <div class="profile-header-tag">जातक कुण्डली (Horoscope)</div>
+                        <h2 id="resName" class="profile-name">Arjun Sharma</h2>
+                        <p id="resMeta" class="profile-details">24 Oct 1995 • 10:30:00 AM • New Delhi, India (UTC +5.5)</p>
+                    </div>
+                </div>
+                <div class="profile-badges">
+                    <div class="sacred-badge">
+                        <span class="badge-sub">Ayanamsha</span>
+                        <span class="badge-main" id="metaAyanamshaBadge">Lahiri 23° 51'</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Astrological Pillars -->
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">🌅</div>
+                    <div class="pillar-label">Lagna (Ascendant)</div>
+                    <div class="pillar-val" id="resLagnaSign">Scorpio (वृश्चिक)</div>
+                    <div class="pillar-sub" id="resLagnaDeg">27° 47' • Jyeshtha</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">🌙</div>
+                    <div class="pillar-label">Chandra Rashi (Moon)</div>
+                    <div class="pillar-val" id="resMoonSign">Libra (तुला)</div>
+                    <div class="pillar-sub" id="resMoonNak">Swati • Pada 1</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">☀️</div>
+                    <div class="pillar-label">Surya Rashi (Sun)</div>
+                    <div class="pillar-val" id="resSunSign">Libra (तुला)</div>
+                    <div class="pillar-sub" id="resSunDeg">06° 34' • Chitra</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">🔥</div>
+                    <div class="pillar-label">Manglik Status</div>
+                    <div class="pillar-val" id="resManglikBadge">Non-Manglik</div>
+                    <div class="pillar-sub" id="resManglikSub">Mars in 12th House</div>
+                </div>
+            </div>
+
+            <!-- Interactive Vedic Chart Canvas Card -->
+            <div class="vedic-card ornate-border chart-showcase-card">
+                <div class="chart-controls-toolbar">
+                    <!-- Chart Style: North vs South -->
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Chart Tradition:</span>
+                        <div class="segmented-control">
+                            <button id="btnNorth" class="segment-btn active" data-style="north">
+                                <span>💠 North Indian (Diamond)</span>
+                            </button>
+                            <button id="btnSouth" class="segment-btn" data-style="south">
+                                <span>🔲 South Indian (Box Grid)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chart Type: D1 vs D9 -->
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Divisional Chart:</span>
+                        <div class="segmented-control">
+                            <button id="btnD1" class="segment-btn active" data-chart="d1">
+                                <span>D1 • Lagna / Rasi</span>
+                            </button>
+                            <button id="btnD9" class="segment-btn" data-chart="d9">
+                                <span>D9 • Navamsha</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Chart Title -->
+                <div class="chart-title-area">
+                    <h3 id="currentChartTitle" class="chart-main-heading">D1 Lagna / Rasi Chart (लग्न जन्म चक्र)</h3>
+                    <p id="currentChartSubtitle" class="chart-sub-heading">North Indian Diamond Format • Fixed Houses, Signs Shift According to Lagna</p>
+                </div>
+
+                <!-- Chart Canvas Container -->
+                <div class="chart-stage">
+                    <div id="chartSvgWrapper" class="svg-container">
+                        <!-- Dynamic SVG Chart Injected Here -->
+                    </div>
+                </div>
+
+                <!-- Vedic Planetary Legend -->
+                <div class="vedic-legend">
+                    <span class="legend-chip"><span class="legend-dot dot-sun"></span> <strong>Su</strong> Surya (Sun)</span>
+                    <span class="legend-chip"><span class="legend-dot dot-moon"></span> <strong>Mo</strong> Chandra (Moon)</span>
+                    <span class="legend-chip"><span class="legend-dot dot-mars"></span> <strong>Ma</strong> Mangal (Mars)</span>
+                    <span class="legend-chip"><span class="legend-dot dot-mercury"></span> <strong>Me</strong> Budha (Mercury)</span>
+                    <span class="legend-chip"><span class="legend-dot dot-jupiter"></span> <strong>Ju</strong> Guru (Jupiter)</span>
+                    <span class="legend-chip"><span class="legend-dot dot-venus"></span> <strong>Ve</strong> Shukra (Venus)</span>
+                    <span class="legend-chip"><span class="legend-dot dot-saturn"></span> <strong>Sa</strong> Shani (Saturn)</span>
+                    <span class="legend-chip"><span class="legend-dot dot-rahu"></span> <strong>Ra</strong> Rahu (North Node)</span>
+                    <span class="legend-chip"><span class="legend-dot dot-ketu"></span> <strong>Ke</strong> Ketu (South Node)</span>
+                    <span class="legend-chip"><span class="retro-badge-legend">(R)</span> Vakri (Retrograde)</span>
+                </div>
+            </div>
+
+            <!-- Wizard Step 2 Navigation Buttons -->
+            <div class="wizard-nav-footer">
+                <button type="button" class="btn btn-vedic-outline" onclick="goToStep(1)">
+                    <span>⬅ Back to Edit Details</span>
+                </button>
+                <button type="button" class="btn btn-vedic-gold" onclick="goToStep(3)">
+                    <span>Proceed to Full Astrological Report ➔</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- =======================================================
+             STEP 3: FULL REPORT & PREDICTIONS (सम्पूर्ण विवेचन)
+             ======================================================= -->
+        <section id="step3Container" class="wizard-step-pane">
+            <div class="vedic-card ornate-border">
+                <div class="report-header-nav">
+                    <div class="report-title-box">
+                        <h2 class="section-heading">Step 3: Astrological Reading & Full Vivarana (सम्पूर्ण कुण्डली फलकथन)</h2>
+                        <p class="section-subtext">Comprehensive life predictions by an experienced Vedic Astrologer, planetary tables, Dashas, and remedies.</p>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn btn-vedic-gold btn-download-pdf" onclick="triggerPrint()" title="Save as a complete multi-page Astrological PDF booklet">
+                            <span>📄 Download Astrologer's PDF Report</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Analysis Tabs Navigation -->
+                <div class="vedic-tabs-bar">
+                    <button class="vedic-tab active" data-tab="tabReport">📜 Astrologer's Reading (विशद फलकथन)</button>
+                    <button class="vedic-tab" data-tab="tabPlanets">🪐 Graha Sthiti (Planets)</button>
+                    <button class="vedic-tab" data-tab="tabHouses">🏛️ Bhava Vichar (Houses)</button>
+                    <button class="vedic-tab" data-tab="tabDashas">⏳ Vimshottari Dashas</button>
+                    <button class="vedic-tab" data-tab="tabPanchang">📅 Vedic Panchang</button>
+                    <button class="vedic-tab" data-tab="tabManglik">🔥 Manglik Analysis</button>
+                </div>
+
+                <!-- Tab 0: Professional Astrologer's Reading (New Feature) -->
+                <div id="tabReport" class="vedic-tab-panel active">
+                    <div class="astrologer-report-container" id="astrologerReportContainer">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Tab 1: Planetary Positions (Graha Sthiti) -->
+                <div id="tabPlanets" class="vedic-tab-panel">
+                    <div class="table-container">
+                        <table class="vedic-table">
+                            <thead>
+                                <tr>
+                                    <th>Graha (ग्रह)</th>
+                                    <th>Rashi (राशि)</th>
+                                    <th>Degrees (अंश)</th>
+                                    <th>House (भाव)</th>
+                                    <th>Nakshatra & Pada</th>
+                                    <th>D9 Navamsha</th>
+                                    <th>Dignity (अवस्था)</th>
+                                    <th>Motion (गति)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="planetsTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Houses & Bhavas Table -->
+                <div id="tabHouses" class="vedic-tab-panel">
+                    <div class="table-container">
+                        <table class="vedic-table">
+                            <thead>
+                                <tr>
+                                    <th>Bhava (भाव)</th>
+                                    <th>Rashi (राशि)</th>
+                                    <th>Lord (स्वामी)</th>
+                                    <th>Signification (कारकत्व)</th>
+                                    <th>Occupying Grahas</th>
+                                </tr>
+                            </thead>
+                            <tbody id="housesTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Vimshottari Dashas -->
+                <div id="tabDashas" class="vedic-tab-panel">
+                    <div class="dasha-header-banner">
+                        <h4 class="dasha-heading">विंशोत्तरी महादशा चक्र (120-Year Vimshottari Cycle)</h4>
+                        <p class="dasha-sub">Starting dasha computed based on Chandra's exact Nakshatra at the moment of birth.</p>
+                    </div>
+                    <!-- Current Dasha & Key Milestones Timeline in Tab 3 -->
+                    <div id="dashaMilestonesContainer"></div>
+                    <div id="dashaTimelineContainer" class="dasha-timeline-list">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Tab 4: Vedic Panchang -->
+                <div id="tabPanchang" class="vedic-tab-panel">
+                    <div class="panchang-cards-grid" id="panchangGrid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Tab 5: Manglik Analysis -->
+                <div id="tabManglik" class="vedic-tab-panel">
+                    <div class="manglik-container" id="manglikBox">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Ephemeris & Mathematical Footnote -->
+                <div class="ephemeris-footer">
+                    <h5 class="footnote-heading">॥ गणितीय एवं ज्योतिषीय आधार (Astronomical Basis) ॥</h5>
+                    <div class="footnote-grid">
+                        <p><strong>Ayanamsha System:</strong> <span id="metaAyanamsha">Lahiri / Chitrapaksha</span></p>
+                        <p><strong>Julian Day:</strong> <span id="metaJd">2450014.7083</span></p>
+                        <p><strong>House Division:</strong> Equal House / Whole Sign (Rasi-Bhava Chalit)</p>
+                        <p><strong>Ephemeris Engine:</strong> Swiss Ephemeris / VSOP87 Theory via PyEphem</p>
+                    </div>
+                </div>
+
+                <!-- Wizard Step 3 Footer Navigation -->
+                <div class="wizard-nav-footer">
+                    <button type="button" class="btn btn-vedic-outline" onclick="goToStep(2)">
+                        <span>⬅ Back to Kundli Chart</span>
+                    </button>
+                    <button type="button" class="btn btn-vedic-primary" onclick="goToStep(1)">
+                        <span>🔄 Create Another Kundli</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Traditional Footer -->
+    <footer class="app-footer">
+        <div class="footer-mantra">॥ असतो मा सद्गमय । तमसो मा ज्योतिर्गमय । मृत्योर्मा अमृतं गमय ॥</div>
+        <p class="footer-copy">Vedic Kundli Portal • Blending Sacred Hindu Jyotish Traditions with Modern Astronomical Precision</p>
+    </footer>
+
+    <script src="/static/app.js?v=6.0"></script>
+</body>
+</html>
